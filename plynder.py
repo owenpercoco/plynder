@@ -1,9 +1,7 @@
 import pynder
 import time
 import random
-import FB
-f_id2 = '1452759613'
-f_token2='EAAGm0PX4ZCpsBADKRidAj2rFXQ9RZBcRzf39G6ys4LC124A2qIG8n3EXWH17GVlgSjovg5IfuJMuBWrsdcrA0exRpzgFPHOjHwmatIFSZCVYeG5Ss1cP2h2JCZAOixZCnIceu9Whz1DvZCBZB6mYl0VUz2OjkBPM3eIWppe6ZAMpJLm9mrNbBo0Po3wSHeVfYL3wmEmEpLrMgMErjRAEt9VG'
+from FB import *
 			
 
 def like_everybody(sess):
@@ -14,16 +12,15 @@ def like_everybody(sess):
                 if d == chance_dislike:
 			girl.dislike
                 else:
-			time.sleep(random.randrange(0, 3))
+			time.sleep(random.randrange(0, 1))
                         print girl.name
                         print girl.photos[0]
                         print girl.instagram_username
-			print 'common friends: ' + str(girl.common_connections)
-                        girl.like
+			girl.like
 
 session = pynder.Session(facebook_id = f_id, facebook_token = f_token)
 session.matches() # get users you have already been matched with
-print 'you have ' + str(len(session.matches())) +  ' matches'
+print 'you have ' + str(len([i for i in session.matches()])) +  ' matches'
 for babes in session.matches():
         print babes
 
